@@ -104,7 +104,7 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
      * @param {Object} params The data request params, depending on the type
      * @returns {Object} Data response
      */
-    const convertHTTPResponse = (response, type, resource, params) => {
+    const convertHTTPResponse = (response, type) => {
         const { headers, json } = response;
         switch (type) {
             case GET_LIST:
@@ -124,8 +124,6 @@ export default (apiUrl, httpClient = fetchUtils.fetchJson) => {
                         10
                     ),
                 };
-            case CREATE:
-                return { data: { ...params.data, id: json.id } };
             default:
                 return { data: json };
         }
